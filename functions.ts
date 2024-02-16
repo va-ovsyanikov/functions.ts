@@ -1,5 +1,34 @@
 
 /**
+ * Записать запись в LocalStorage
+ * */
+export const setLocalStorage = (name: string, data: any = null, json = false) => {
+  if (json) {
+    data = JSON.stringify(data);
+  }
+  return localStorage.setItem(name, data);
+};
+
+/**
+ *  Получить запись из LocalStorage
+ * */
+export const getLocalStorage = (name: string, json = false): any => {
+  let item = localStorage.getItem(name);
+  if (json) {
+    item = JSON.parse(item);
+  }
+  return item;
+};
+/**
+ * Удалить запись из LocalStorage по ключу
+ * */
+export const removeLocalStorage = (name: string) => {
+  localStorage.removeItem(name);
+};
+
+//=======================================================================
+
+/**
  * Валидация почты
  * */
 export function validateEmail(email:string): boolean {
