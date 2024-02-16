@@ -1,3 +1,31 @@
+/**
+ * Записать запись в SessionStorage
+ * */
+export const setSessionStorage = (name: string, data: any = null, json = false) => {
+  if (json) {
+    data = JSON.stringify(data);
+  }
+  return sessionStorage.setItem(name, data);
+};
+
+/**
+ *  Получить запись из SessionStorage
+ * */
+export const getSessionStorage = (name: string, json = false): any => {
+  let item = sessionStorage.getItem(name);
+  if (json) {
+    item = JSON.parse(item);
+  }
+  return item;
+};
+/**
+ * Удалить запись из SessionStorage по ключу
+ * */
+export const removeSessionStorage = (name: string) => {
+  sessionStorage.removeItem(name);
+};
+
+//=======================================================================
 
 /**
  * Записать запись в LocalStorage
