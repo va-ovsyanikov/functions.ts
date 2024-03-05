@@ -1,3 +1,11 @@
+/**
+ * Возвращает заполненный массив 
+ * @param len - длинна массива 
+ * @param elem - заполнитель
+ **/ 
+export function fillArray<T>(len: number, elem: T ): T[]{
+      return new Array<T>(len).fill(elem)
+}
 
 /**
  * Замена значений в строке из массива данных, заменяет от 1-...
