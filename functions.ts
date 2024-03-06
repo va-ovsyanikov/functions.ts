@@ -1,6 +1,6 @@
 /**
  * Возвращает заполненный массив 
- * @param len - длинна массива 
+ * @param len - длина массива 
  * @param elem - заполнитель
  **/ 
 export function fillArray<T>(len: number, elem: T ): T[]{
