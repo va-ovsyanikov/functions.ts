@@ -1,5 +1,5 @@
 /**
- * Возвращает значение поля обьекта
+ * Возвращает ключ поля обьекта
  * @param obj - обьект 
  * @param day - ключ
  **/ 
@@ -9,11 +9,22 @@ const months = {
   March: 31,
 }
 
-export function days<T extends object, U extends keyof T>(obj: T, day: U){
-  return obj[day]
+export function getKeyObj<T extends object, U extends keyof T>(obj: T, value: T[U]):U | null{
+  const key = (Object.keys(obj) as Array<U>).find(k => obj[k] === value)
+  return key || null
 }
+const data = getKeyObj(months, 31)
 
-const data = days(months, 'January')
+
+/**
+ * Возвращает значение поля обьекта
+ * @param obj - обьект 
+ * @param key - ключ
+ **/ 
+export function getValueObj<T extends object, U extends keyof T>(obj: T, key: U){
+  return obj[key]
+}
+const valueObj = getValueObj(months, 'January')
 
 /**
  * Возвращает заполненный массив 
