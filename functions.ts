@@ -1,4 +1,21 @@
 /**
+ * Возвращает значение поля обьекта
+ * @param obj - обьект 
+ * @param day - ключ
+ **/ 
+const months = {
+  January: 31,
+  February: 28,
+  March: 31,
+}
+
+export function days<T extends object, U extends keyof T>(obj: T, day: U){
+  return obj[day]
+}
+
+const data = days(months, 'January')
+
+/**
  * Возвращает заполненный массив 
  * @param len - длина массива 
  * @param elem - заполнитель
@@ -6,6 +23,8 @@
 export function fillArray<T>(len: number, elem: T ): T[]{
       return new Array<T>(len).fill(elem)
 }
+
+//=======================================================================
 
 /**
  * Замена значений в строке из массива данных, заменяет от 1-...
