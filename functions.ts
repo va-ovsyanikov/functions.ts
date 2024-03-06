@@ -1,7 +1,8 @@
 /**
- * Возвращает ключ поля обьекта
+ * Изменение значения поля обьекта
  * @param obj - обьект 
- * @param day - ключ
+ * @param field - поле
+ * @param val - значение поля
  **/ 
 const months = {
   January: 31,
@@ -9,11 +10,25 @@ const months = {
   March: 31,
 }
 
+export function pathField<T extends object, U extends keyof T, V extends T[U]>(obj: T, field: U, val: V){}
+pathField(months, 'February', 31)
+
+/**
+ * Возвращает ключ поля обьекта
+ * @param obj - обьект 
+ * @param day - ключ
+ **/ 
+// const months = {
+//   January: 31,
+//   February: 28,
+//   March: 31,
+// }
+
 export function getKeyObj<T extends object, U extends keyof T>(obj: T, value: T[U]):U | null{
   const key = (Object.keys(obj) as Array<U>).find(k => obj[k] === value)
   return key || null
 }
-const data = getKeyObj(months, 31)
+getKeyObj(months, 31)
 
 
 /**
@@ -24,7 +39,7 @@ const data = getKeyObj(months, 31)
 export function getValueObj<T extends object, U extends keyof T>(obj: T, key: U){
   return obj[key]
 }
-const valueObj = getValueObj(months, 'January')
+getValueObj(months, 'January')
 
 /**
  * Возвращает заполненный массив 
