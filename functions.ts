@@ -1,4 +1,23 @@
 /**
+ * Валидация на наличие поля 
+ * keyof typeof
+ * @param data - обьект 
+ **/ 
+const formData = {
+  firstName: 'John',
+  lastName: 'Doe',
+  age: 30,
+  id: 123
+}
+// type ValidationResult = {
+//   [key in keyof typeof formData]: boolean
+// }
+
+export function validate<T>(data: T): { [key in keyof T]: boolean } | void {}
+const r = validate<typeof formData>(formData)
+
+
+/**
  * Изменение значения поля обьекта
  * @param obj - обьект 
  * @param field - поле
@@ -18,12 +37,6 @@ pathField(months, 'February', 31)
  * @param obj - обьект 
  * @param day - ключ
  **/ 
-// const months = {
-//   January: 31,
-//   February: 28,
-//   March: 31,
-// }
-
 export function getKeyObj<T extends object, U extends keyof T>(obj: T, value: T[U]):U | null{
   const key = (Object.keys(obj) as Array<U>).find(k => obj[k] === value)
   return key || null
