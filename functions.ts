@@ -318,7 +318,13 @@ export function validateNumber(value: string): boolean {
   const numberRegexp = /^(?=.*\d).{1,}$/;
   return numberRegexp.test(value);
 }
-
+/**
+* Валидация на положительное число 
+* */
+export function validateNumeric(value: string): boolean {
+ const numberRegexp = /^\d+$/;
+ return numberRegexp.test(value);
+}
 /**
  * Валидация на специальные символы
  * */
